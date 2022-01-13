@@ -5,7 +5,7 @@ const res = require('express/lib/response');
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 const app = express()
-
+const port = process.env.PORT || 3000
 
 //console.log(__dirname)
 //console.log(__filename)
@@ -85,9 +85,7 @@ app.get('/products', (req, res) => {
     })
 
 })
-app.listen(3000, () => {
-    console.log('server is up on port 3000');
-})
+
 app.get('/help/*', (req, res) => {
     res.render("helperror",
         {
@@ -102,4 +100,7 @@ app.get('*', (req, res) => {
         name: 'Anish',
         errorMessage: 'page not found 404 error'
     })
+})
+app.listen(port, () => {
+    console.log('server is up on port 3000');
 })
